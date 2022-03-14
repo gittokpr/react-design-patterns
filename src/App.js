@@ -5,6 +5,7 @@ import { SmallPersonListItem } from "./people/SmallPersonListItem";
 import { RegularList } from "./RegularList";
 import SplitScreen from "./SplitScreen";
 import { UserInfo } from "./UserInfo";
+import UserLoader from "./UserLoader";
 
 const LeftHandComponent = ({ name }) => {
   return <h1 style={{ backgroundColor: 'green' }}>{name}</h1>;
@@ -36,6 +37,9 @@ const people = [{
 function App() {
   return (
     <>
+      <UserLoader userId={'234'}>
+        <UserInfo />
+      </UserLoader>
       <CurrentUserLoader>
         <UserInfo />
       </CurrentUserLoader>
