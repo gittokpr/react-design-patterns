@@ -1,8 +1,10 @@
+import CurrentUserLoader from "./CurrentUserLoader";
 import Model from "./Model";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallPersonListItem } from "./people/SmallPersonListItem";
 import { RegularList } from "./RegularList";
 import SplitScreen from "./SplitScreen";
+import { UserInfo } from "./UserInfo";
 
 const LeftHandComponent = ({ name }) => {
   return <h1 style={{ backgroundColor: 'green' }}>{name}</h1>;
@@ -34,6 +36,9 @@ const people = [{
 function App() {
   return (
     <>
+      <CurrentUserLoader>
+        <UserInfo />
+      </CurrentUserLoader>
       <Model>
         <LargePersonListItem person={people[0]} />
       </Model>
