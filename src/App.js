@@ -12,6 +12,7 @@ import { RegularList } from "./RegularList";
 import ResourceLoader from "./ResourceLoader";
 import SplitScreen from "./SplitScreen";
 import UncontrolledForm from "./UncontrolledForm";
+import UncontrollledOnboardingFlow from "./UncontrollledOnboardingFlow";
 import { UserInfo } from "./UserInfo";
 import UserLoader from "./UserLoader";
 
@@ -52,12 +53,36 @@ const getLocalStorageData = key => () => {
 
 const Text = ({ message }) => <h1>{message}</h1>;
 
+const Step1 = ({ goToNext }) => (
+  <>
+    <p>Step 1</p>
+    <button onClick={goToNext}>next</button>
+  </>
+);
+const Step2 = ({ goToNext }) => (
+  <>
+    <p>Step 2</p>
+    <button onClick={goToNext}>next</button>
+  </>
+);
+const Step3 = ({ goToNext }) => (
+  <>
+    <p>Step 3</p>
+    <button onClick={goToNext}>next</button>
+  </>
+);
+
 function App() {
 
   const [shouldModalShow, setShouldModalShow] = useState(false);
 
   return (
     <>
+      <UncontrollledOnboardingFlow>
+        <Step1 />
+        <Step2 />
+        <Step3 />
+      </UncontrollledOnboardingFlow>
       <ControlledModal shouldShow={shouldModalShow} onRequestClose={
         () => setShouldModalShow(false)
       }>
