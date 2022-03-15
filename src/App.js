@@ -1,4 +1,6 @@
+import axios from "axios";
 import CurrentUserLoader from "./CurrentUserLoader";
+import DataSource from "./DataSource";
 import Model from "./Model";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallPersonListItem } from "./people/SmallPersonListItem";
@@ -35,10 +37,17 @@ const people = [{
   hobbies: ['biology', 'medicine', 'gymnastics'],
 }];
 
+const getUserData = url => async () => {
+  const response = await axios.get(url);
+  return response.data;
+}
 
 function App() {
   return (
     <>
+      <DataSource getDataFunc={getUserData('/users/123')} resourceName={'user'}>
+        <UserInfo />
+      </DataSource>
       <ResourceLoader resourceUrl={'/products/1234'} resourceName={'product'} >
         <ProductInfo />
       </ResourceLoader>
