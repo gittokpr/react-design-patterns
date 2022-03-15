@@ -2,7 +2,9 @@ import CurrentUserLoader from "./CurrentUserLoader";
 import Model from "./Model";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallPersonListItem } from "./people/SmallPersonListItem";
+import { ProductInfo } from "./ProductInfo";
 import { RegularList } from "./RegularList";
+import ResourceLoader from "./ResourceLoader";
 import SplitScreen from "./SplitScreen";
 import { UserInfo } from "./UserInfo";
 import UserLoader from "./UserLoader";
@@ -37,6 +39,9 @@ const people = [{
 function App() {
   return (
     <>
+      <ResourceLoader resourceUrl={'/products/1234'} resourceName={'product'} >
+        <ProductInfo />
+      </ResourceLoader>
       <UserLoader userId={'234'}>
         <UserInfo />
       </UserLoader>
