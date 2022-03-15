@@ -1,5 +1,7 @@
 import axios from "axios";
+import { useState } from "react";
 import ControlledForm from "./ControlledForm";
+import ControlledModal from "./ControlledModal";
 import CurrentUserLoader from "./CurrentUserLoader";
 import DataSource from "./DataSource";
 import Model from "./Model";
@@ -51,8 +53,17 @@ const getLocalStorageData = key => () => {
 const Text = ({ message }) => <h1>{message}</h1>;
 
 function App() {
+
+  const [shouldModalShow, setShouldModalShow] = useState(false);
+
   return (
     <>
+      <ControlledModal shouldShow={shouldModalShow} onRequestClose={
+        () => setShouldModalShow(false)
+      }>
+        <LargePersonListItem person={people[0]} />
+      </ControlledModal>
+      <button onClick={() => setShouldModalShow(true)}>Show Modal</button>
       <ControlledForm />
       <UncontrolledForm />
       <DataSource getDataFunc={getLocalStorageData('message')} resourceName={'message'}>
