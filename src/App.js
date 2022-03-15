@@ -8,6 +8,7 @@ import { ProductInfo } from "./ProductInfo";
 import { RegularList } from "./RegularList";
 import ResourceLoader from "./ResourceLoader";
 import SplitScreen from "./SplitScreen";
+import UncontrolledForm from "./UncontrolledForm";
 import { UserInfo } from "./UserInfo";
 import UserLoader from "./UserLoader";
 
@@ -51,6 +52,7 @@ const Text = ({ message }) => <h1>{message}</h1>;
 function App() {
   return (
     <>
+      <UncontrolledForm />
       <DataSource getDataFunc={getLocalStorageData('message')} resourceName={'message'}>
         <Text />
       </DataSource>
