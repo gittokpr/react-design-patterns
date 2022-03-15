@@ -56,19 +56,19 @@ const Text = ({ message }) => <h1>{message}</h1>;
 const Step1 = ({ goToNext }) => (
   <>
     <p>Step 1</p>
-    <button onClick={goToNext}>next</button>
+    <button onClick={() => goToNext({ name: 'gitto' })}>next</button>
   </>
 );
 const Step2 = ({ goToNext }) => (
   <>
     <p>Step 2</p>
-    <button onClick={goToNext}>next</button>
+    <button onClick={() => goToNext({ age: 23 })}>next</button>
   </>
 );
 const Step3 = ({ goToNext }) => (
   <>
     <p>Step 3</p>
-    <button onClick={goToNext}>next</button>
+    <button onClick={() => goToNext({ hairColor: 'black' })}>next</button>
   </>
 );
 
@@ -78,7 +78,10 @@ function App() {
 
   return (
     <>
-      <UncontrollledOnboardingFlow>
+      <UncontrollledOnboardingFlow onFinish={data => {
+        console.log(data);
+        alert("Onboarding completed");
+      }}>
         <Step1 />
         <Step2 />
         <Step3 />
