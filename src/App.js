@@ -8,6 +8,7 @@ import DataSource from "./DataSource";
 import Model from "./Model";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallPersonListItem } from "./people/SmallPersonListItem";
+import { printProps } from "./printProps";
 import { ProductInfo } from "./ProductInfo";
 import { RegularList } from "./RegularList";
 import ResourceLoader from "./ResourceLoader";
@@ -93,8 +94,11 @@ function App() {
     setCurIndex(curIndex + 1);
   }
 
+  const UserInfoWrapped = printProps(UserInfo);
+
   return (
     <>
+      <UserInfoWrapped a={1} b={"test"} c={{ name: "min" }} />
       <ControllledOnboardingFlow onFinish={data => {
         console.log(data);
         alert("Onboarding completed");

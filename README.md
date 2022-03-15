@@ -19,3 +19,7 @@ Components that keep track of their own states and release data only when some e
 ## Controlled Components
 
 Components that donot keep track of their own state - all state is passed in as props(that is, when we use the useState hooks with text inputs).
+
+## Higher Order Components
+
+HOC's are functions which return components.HOC's are used for sharing complex behaviour between multiple components. It can also be used to add additional functionality to an existing component.
