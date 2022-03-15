@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import ControlledForm from "./ControlledForm";
 import ControlledModal from "./ControlledModal";
+import ControllledOnboardingFlow from "./ControlledOnboardingFlow";
 import CurrentUserLoader from "./CurrentUserLoader";
 import DataSource from "./DataSource";
 import Model from "./Model";
@@ -62,12 +63,19 @@ const Step1 = ({ goToNext }) => (
 const Step2 = ({ goToNext }) => (
   <>
     <p>Step 2</p>
-    <button onClick={() => goToNext({ age: 23 })}>next</button>
+    <button onClick={() => goToNext({ age: 62 })}>next</button>
   </>
 );
 const Step3 = ({ goToNext }) => (
   <>
     <p>Step 3</p>
+    <h3>Congratulations</h3>
+    <button onClick={() => goToNext({ hairColor: 'black' })}>next</button>
+  </>
+);
+const Step4 = ({ goToNext }) => (
+  <>
+    <p>Step 4</p>
     <button onClick={() => goToNext({ hairColor: 'black' })}>next</button>
   </>
 );
@@ -76,8 +84,26 @@ function App() {
 
   const [shouldModalShow, setShouldModalShow] = useState(false);
 
+  // to save the data obtained from each onboarding step. controlled
+  const [onboardingData, setOnboardingData] = useState({});
+  const [curIndex, setCurIndex] = useState(0);
+
+  const onNext = stepData => {
+    setOnboardingData({ ...onboardingData, ...stepData });
+    setCurIndex(curIndex + 1);
+  }
+
   return (
     <>
+      <ControllledOnboardingFlow onFinish={data => {
+        console.log(data);
+        alert("Onboarding completed");
+      }} curIndex={curIndex} onNext={onNext}>
+        <Step1 />
+        <Step2 />
+        {onboardingData.age > 60 && <Step3 />}
+        <Step4 />
+      </ControllledOnboardingFlow>
       <UncontrollledOnboardingFlow onFinish={data => {
         console.log(data);
         alert("Onboarding completed");
