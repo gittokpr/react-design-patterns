@@ -1,4 +1,5 @@
 import axios from "axios";
+import ControlledForm from "./ControlledForm";
 import CurrentUserLoader from "./CurrentUserLoader";
 import DataSource from "./DataSource";
 import Model from "./Model";
@@ -52,6 +53,7 @@ const Text = ({ message }) => <h1>{message}</h1>;
 function App() {
   return (
     <>
+      <ControlledForm />
       <UncontrolledForm />
       <DataSource getDataFunc={getLocalStorageData('message')} resourceName={'message'}>
         <Text />
