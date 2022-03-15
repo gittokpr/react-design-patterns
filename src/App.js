@@ -17,6 +17,7 @@ import UncontrolledForm from "./UncontrolledForm";
 import UncontrollledOnboardingFlow from "./UncontrollledOnboardingFlow";
 import { UserInfo } from "./UserInfo";
 import UserLoader from "./UserLoader";
+import { withUser } from "./withUser";
 
 const LeftHandComponent = ({ name }) => {
   return <h1 style={{ backgroundColor: 'green' }}>{name}</h1>;
@@ -96,8 +97,11 @@ function App() {
 
   const UserInfoWrapped = printProps(UserInfo);
 
+  const UserInfoLoader = withUser(UserInfo, '345');
+
   return (
     <>
+      <UserInfoLoader />
       <UserInfoWrapped a={1} b={"test"} c={{ name: "min" }} />
       <ControllledOnboardingFlow onFinish={data => {
         console.log(data);
