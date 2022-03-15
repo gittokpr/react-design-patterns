@@ -16,6 +16,7 @@ import SplitScreen from "./SplitScreen";
 import UncontrolledForm from "./UncontrolledForm";
 import UncontrollledOnboardingFlow from "./UncontrollledOnboardingFlow";
 import { UserInfo } from "./UserInfo";
+import { UserInfoForm } from "./UserInfoForm";
 import UserLoader from "./UserLoader";
 import { withUser } from "./withUser";
 
@@ -101,6 +102,7 @@ function App() {
 
   return (
     <>
+      <UserInfoForm />
       <UserInfoLoader />
       <UserInfoWrapped a={1} b={"test"} c={{ name: "min" }} />
       <ControllledOnboardingFlow onFinish={data => {
